@@ -48,8 +48,6 @@ func main() {
 		values[i] = res
 	}
 
-	fmt.Println(values)
-
 	var total int = 0
 	for i := 0; i < len(lines); i++ {
 		total += values[i]
