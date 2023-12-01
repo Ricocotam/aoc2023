@@ -32,6 +32,10 @@ func compute_line(line string) int {
 	return res
 }
 
+// Hacky solution
+// Sometimes we encounter twoone which should be transformed into 21
+// By replacing each number with the last letter and passing regex 2 times
+// we can prevent this issue.
 var stringNumber map[string]string = map[string]string{
 	"one":   "1e",
 	"two":   "2o",
@@ -65,7 +69,6 @@ func main() {
 
 	data := string(raw_data)
 	data = transformStringNumbers(data)
-	fmt.Println(data)
 	lines := strings.Split(data, "\n")
 
 	var values []int = make([]int, len(lines))
@@ -79,7 +82,6 @@ func main() {
 	for i := 0; i < len(lines); i++ {
 		total += values[i]
 	}
-	fmt.Println(values)
-	fmt.Println(total)
 
+	fmt.Println(total)
 }
