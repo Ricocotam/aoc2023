@@ -33,15 +33,15 @@ func compute_line(line string) int {
 }
 
 var stringNumber map[string]string = map[string]string{
-	"one":   "1",
-	"two":   "2",
-	"three": "3",
-	"four":  "4",
-	"five":  "5",
-	"six":   "6",
-	"seven": "7",
-	"eight": "8",
-	"nine":  "9",
+	"one":   "1e",
+	"two":   "2o",
+	"three": "3e",
+	"four":  "4r",
+	"five":  "5e",
+	"six":   "6x",
+	"seven": "7n",
+	"eight": "8t",
+	"nine":  "9e",
 }
 
 func replacer(number string) string {
@@ -53,11 +53,12 @@ func transformStringNumbers(text string) string {
 	myregex := regexp.MustCompile("one|two|three|four|five|six|seven|eight|nine")
 
 	finalText := myregex.ReplaceAllStringFunc(text, replacer)
+	finalText = myregex.ReplaceAllStringFunc(finalText, replacer)
 	return finalText
 }
 
 func main() {
-	raw_data, err := os.ReadFile("data/test_input.txt")
+	raw_data, err := os.ReadFile("data/day1_input.txt")
 	if err != nil {
 		panic(err)
 	}
@@ -78,7 +79,7 @@ func main() {
 	for i := 0; i < len(lines); i++ {
 		total += values[i]
 	}
-
+	fmt.Println(values)
 	fmt.Println(total)
 
 }
